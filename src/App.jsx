@@ -1,70 +1,84 @@
+import React, { useState } from 'react'
+import Hero from './components/Hero'
+import Slide from './components/Slide'
+import Services from './components/Services'
+
 function App() {
+  const [showDeck, setShowDeck] = useState(false)
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-blue-100">
+      <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(59,130,246,0.15),transparent)]" />
+      <div className="relative">
+        <Hero onGetStarted={() => setShowDeck(true)} />
+        <Services />
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
+        {showDeck && (
+          <div className="space-y-6 pb-16">
+            <Slide
+              title="Problem Statement"
+              bullets={[
+                'Dog walkers often provide insufficient walks & misrepresent exercise.',
+                'Owners struggle to find reliable boarding/grooming during work or travel.',
+                'Lack of transparency & trust in dog care services.',
+                'Nutritious meals for dogs are either expensive or filled with preservatives.',
+                'Limited options for specialized workouts & engagement for dogs.',
+              ]}
+            />
 
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
+            <Slide
+              title="Services Offered (Solutions)"
+              bullets={[
+                'Verified Dog Walking – GPS + live POV camera tracking.',
+                'Community Boarding – connect with trusted dog lovers for homely care.',
+                'Grooming Services – discounted deals via partner salons, home pick-up.',
+                'Extensive Workouts – cycling runs, swimming, park visits, puppy training.',
+                'Healthy Meal/Tiffin Service – fresh, preservative-free meals via kitchens.',
+              ]}
+            />
 
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
+            <Slide
+              title="Industry Trends & Opportunity"
+              bullets={[
+                'Pet care industry in India: Growing at ~20% CAGR, projected at $1.5B+ by 2030.',
+                'Rising nuclear families & working professionals with pets.',
+                'Shift towards premium pet care & healthy diets.',
+                'Growing pet tech adoption (GPS collars, pet tracking apps).',
+                'Opportunity to build India’s first integrated pet-care + community platform.',
+              ]}
+            />
+
+            <Slide
+              title="Uniqueness & Innovation"
+              bullets={[
+                'Transparency: Dog walker live-stream POV.',
+                'Community-driven boarding (Airbnb for dogs).',
+                'Affordable grooming & food via partnership model.',
+                'Integrated all-in-one app (walks, workouts, food, grooming, community).',
+                'Trust-first approach: Verification, ratings, and tracking features.',
+              ]}
+            />
+
+            <Slide
+              title="Business Model Canvas"
+              bullets={[
+                'Customer Segments: Pet owners (urban professionals), grooming salons, kitchens.',
+                'Value Proposition: Reliable, transparent, affordable pet care + community.',
+                'Channels: Mobile app (Pluto), social media, partnerships.',
+                'Customer Relationships: Subscription, reviews/ratings, gamified loyalty.',
+                'Revenue Streams: Commission on grooming/boarding; subscription for premium; delivery/tiffin margin; workout service fees.',
+                'Key Resources: App, partnerships, verified service providers.',
+                'Key Activities: App dev, verification, community management.',
+                'Key Partners: Grooming salons, kitchens, cycling/swimming trainers.',
+                'Cost Structure: Tech dev, operations, partnerships, marketing.',
+              ]}
+            />
           </div>
+        )}
 
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
-          </div>
-        </div>
+        <footer className="text-center py-10 text-blue-300/70">
+          Built for pet parents and dog lovers across India.
+        </footer>
       </div>
     </div>
   )
